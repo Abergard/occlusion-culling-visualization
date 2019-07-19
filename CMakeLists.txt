@@ -24,7 +24,7 @@ find_package(VL COMPONENTS
   VLMain REQUIRED)
 
 if(OCV_TESTS)
-  set(gtest_force_shared_crt ON)
+  set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
   add_subdirectory(external/googletest)
   enable_testing()
 endif()

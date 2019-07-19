@@ -39,7 +39,7 @@ public:
         EXPECT_NEAR(x, b.x, 0.01);
         EXPECT_NEAR(y, b.y, 0.01);
         EXPECT_NEAR(length, b.length, 0.01);
-        EXPECT_NEAR(height, b.height, 0.01);
+        EXPECT_NEAR(height * 1.5f, b.height, 0.01);
         EXPECT_NEAR(rotation, b.rotation, 0.01);
     }
 
