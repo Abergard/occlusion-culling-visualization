@@ -26,6 +26,9 @@ public:
     virtual void setMouseVisible(bool) = 0;
 };
 
+// std::unique_ptr<Window>
+//     createWin32Window(std::string title, int width, int height);
+
 std::unique_ptr<Window>
-    createWin32Window(std::string title, int width, int height);
+    createGlfwWindow(std::string title, int width, int height);
 }

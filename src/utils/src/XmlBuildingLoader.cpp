@@ -20,7 +20,7 @@ namespace
 ptree getCityPlan(std::stringstream cityPlanXml)
 {
     ptree cityPlan;
-    read_xml(std::move(cityPlanXml), cityPlan);
+    read_xml(cityPlanXml, cityPlan);
     return cityPlan;
 }
 

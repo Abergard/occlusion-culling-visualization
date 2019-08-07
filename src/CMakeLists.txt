@@ -26,8 +26,11 @@ target_link_libraries(occlusion-culling-visualization
   PRIVATE ${VL_LIBRARIES} ${OPENGL_LIBRARIES}
           camera utils window view input)
 
+# target_compile_options(occlusion-culling-visualization
+#   PRIVATE /W4)
+
 target_compile_options(occlusion-culling-visualization
-  PRIVATE /W4)
+  PRIVATE -Wall -pedantic)
   
 install (TARGETS occlusion-culling-visualization
   RUNTIME DESTINATION ./bin

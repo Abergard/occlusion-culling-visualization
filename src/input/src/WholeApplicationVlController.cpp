@@ -15,7 +15,6 @@
 #include "ToggleView.hpp"
 #include "ToggleVisualizationEffect.hpp"
 #include "ToggleWireMode.hpp"
-#include "VisualizationCommand.hpp"
 #include "utils/vl/Log.hpp"
 #include "view/VisualizationView.hpp"
 #include "window/Window.hpp"
@@ -38,8 +37,8 @@ auto createMap(Args&&... args)
 {
     using pair_t = typename std::tuple_element<0, std::tuple<Pair...>>::type;
 
-    std::map<pair_t::key_t, std::unique_ptr<Base>> m{};
-    ((m[Pair::key_v] = std::make_unique<Pair::value_t>(args...)), ...);
+    std::map<typename pair_t::key_t, std::unique_ptr<Base>> m{};
+    ((m[Pair::key_v] = std::make_unique<typename Pair::value_t>(args...)), ...);
     return m;
 }
 }

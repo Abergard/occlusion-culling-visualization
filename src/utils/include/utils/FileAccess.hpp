@@ -8,6 +8,7 @@ namespace ocv
 class FileAccess
 {
 public:
+    virtual ~FileAccess() = default;
     virtual std::string read(const std::string& fileName) const = 0;
 };
 

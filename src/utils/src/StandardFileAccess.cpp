@@ -1,5 +1,6 @@
 #include "StandardFileAccess.hpp"
 
+#include <cstring>
 #include <cerrno>
 #include <fstream>
 #include <iostream>
