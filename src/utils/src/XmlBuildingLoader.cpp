@@ -3,6 +3,7 @@
 #include <fstream>
 #include <iostream>
 #include <iterator>
+#include <string>
 
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/xml_parser.hpp>
@@ -20,7 +21,7 @@ namespace
 ptree getCityPlan(std::stringstream cityPlanXml)
 {
     ptree cityPlan;
-    read_xml(std::move(cityPlanXml), cityPlan);
+    read_xml(cityPlanXml, cityPlan);
     return cityPlan;
 }
 

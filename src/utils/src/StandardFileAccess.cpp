@@ -3,6 +3,7 @@
 #include <cerrno>
 #include <fstream>
 #include <iostream>
+#include <cstring>
 
 namespace ocv
 {

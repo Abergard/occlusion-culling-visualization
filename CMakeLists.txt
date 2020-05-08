@@ -11,7 +11,7 @@ set(VL_ROOT "${CMAKE_SOURCE_DIR}/external/Visualization_Library_SDK"
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${VL_ROOT}/cmake")
 
-find_package(Boost 1.6 REQUIRED)
+find_package(Boost REQUIRED)
 find_package(OpenGL REQUIRED)
 find_package(VL COMPONENTS
   VLCore
@@ -21,7 +21,7 @@ find_package(VL COMPONENTS
   VLVolume
   VLMolecule
   VLWin32
-  VLMain REQUIRED)
+  VLMain )
 
 if(OCV_TESTS)
   set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
