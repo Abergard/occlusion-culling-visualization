@@ -11,6 +11,9 @@ set(VL_ROOT "${CMAKE_SOURCE_DIR}/external/Visualization_Library_SDK"
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${VL_ROOT}/cmake")
 
+find_package(tinyxml2 CONFIG REQUIRED)
+#target_link_libraries(main PRIVATE tinyxml2::tinyxml2)
+
 find_package(Boost 1.6 REQUIRED)
 find_package(OpenGL REQUIRED)
 find_package(VL COMPONENTS
