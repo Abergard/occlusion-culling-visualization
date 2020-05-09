@@ -1,0 +1,41 @@
+sudo: required
+dist: bionic
+language: cpp
+
+matrix:
+  include:
+    - compiler: gcc
+      addons:
+        apt:
+          update: true
+          sources:
+            - ubuntu-toolchain-r-test
+            - sourceline: 'ppa:mhier/libboost-latest'
+          packages:
+            - g++-8
+            - boost1.68
+            - valgrind
+      env:
+      - C_COMPILER=gcc-8
+      - CXX_COMPILER=g++-8
+
+script:
+  - cmake --version
+  - mkdir build
+  - cd build
+  - env CC=${C_COMPILER} CXX=${CXX_COMPILER} cmake .. -DENABLE_COVERAGE=TRUE -DENABLE_TESTING=TRUE
+  - echo "We have" `nproc` "cores here"
+  - make -j `nproc`
+  - ctest -j `nproc` --output-on-failur
+
+  - mkdir build
+  - cd build
+  - mkdir vl
+  - cd vl
+  - cmake ../../external/VisualizationLibrary/ -DCMAKE_BUILD_TYPE=Release -DVL_GUI_GLFW3_SUPPORT=ON -DVL_INSTALL_DATA=ON -DCMAKE_INSTALL_PREFIX="$TRAVIS_BUILD_DIR/build/vl-sdk"
+  - cmake --build . --target install --config Release
+  - cd ..
+  - mkdir occ
+  - cd occ
+  - cmake .. -DCMAKE_BUILD_TYPE=Release -DVL_ROOT="$TRAVIS_BUILD_DIR/build/vl-sdk" -DCMAKE_INSTALL_PREFIX="$TRAVIS_BUILD_DIR/build/occ-sdk" -Wno-dev
+  - cmake --build . --target install --config Release -j 2
