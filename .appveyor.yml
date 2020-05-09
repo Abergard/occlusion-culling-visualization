@@ -32,12 +32,12 @@ build_script:
   - cd build
   - mkdir vl
   - cd vl
-  - cmake ../../external/Visualization_Library/ -DCMAKE_BUILD_TYPE=Release -DVL_GUI_GLFW3_SUPPORT=ON -DVL_INSTALL_DATA=ON -DCMAKE_INSTALL_PREFIX="%APPVEYOR_BUILD_FOLDER%/build/vl-sdk"
+  - cmake ../../external/Visualization_Library/ -DCMAKE_BUILD_TYPE=Release -DVL_GUI_GLFW_SUPPORT=ON -DVL_INSTALL_DATA=ON -DCMAKE_INSTALL_PREFIX="%APPVEYOR_BUILD_FOLDER%/build/vl-sdk"
   - cmake --build . --target install --config Release
   - cd ..
   - mkdir occ
   - cd occ
-  - cmake .. -DCMAKE_BUILD_TYPE=Release -DVL_ROOT="%APPVEYOR_BUILD_FOLDER%/build/vl-sdk" -DCMAKE_INSTALL_PREFIX="%APPVEYOR_BUILD_FOLDER%/build/occ-sdk" -Wno-dev
+  - cmake ../.. -DCMAKE_BUILD_TYPE=Release -DVL_ROOT="%APPVEYOR_BUILD_FOLDER%/build/vl-sdk" -DCMAKE_INSTALL_PREFIX="%APPVEYOR_BUILD_FOLDER%/build/occ-sdk" -Wno-dev
   - cmake --build . --target install --config Release -j 2
 
 matrix:
