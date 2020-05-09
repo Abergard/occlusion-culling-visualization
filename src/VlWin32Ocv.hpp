@@ -34,7 +34,9 @@ try
 
     constexpr auto windowTitle{"Occlusion Culling"};
 
-    const auto window = std::shared_ptr<ocv::Window>(ocv::createWin32Window(
+    // const auto window = std::shared_ptr<ocv::Window>(ocv::createWin32Window(
+    //     windowTitle, mainScreen.width, mainScreen.height));
+    const auto window = std::shared_ptr<ocv::Window>(ocv::createGlfwWindow(
         windowTitle, mainScreen.width, mainScreen.height));
     const auto camera = std::make_shared<ocv::DoubleCamera>(window);
     const auto view = std::shared_ptr<ocv::VisualizationView>(

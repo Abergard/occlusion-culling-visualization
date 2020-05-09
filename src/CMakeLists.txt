@@ -31,7 +31,7 @@ target_link_libraries(occlusion-culling-visualization
 
 target_compile_options(occlusion-culling-visualization
   PRIVATE -Wall -pedantic)
-  
+ 
 install (TARGETS occlusion-culling-visualization
   RUNTIME DESTINATION ./bin
   COMPONENT OCVexe)
@@ -54,7 +54,9 @@ install(FILES
   ${VL_ROOT}/bin/VLVolume.dll
   ${VL_ROOT}/bin/VLMolecule.dll
   ${VL_ROOT}/bin/VLWin32.dll
+  ${VL_ROOT}/bin/VLGLFW.dll
   ${VL_ROOT}/bin/VLMain.dll
+  ${CMAKE_CURRENT_BINARY_DIR}/glfw3.dll
   DESTINATION ./bin
   COMPONENT VLDLL)
 
