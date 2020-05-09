@@ -12,7 +12,6 @@ environment:
   package_name: occlusion-culling-visualization.exe
 
 platform:
-  - x86
   - x64
 
 cache:
@@ -33,7 +32,7 @@ build_script:
   - cd build
   - mkdir vl
   - cd vl
-  - cmake ../../external/VisualizationLibrary/ -DCMAKE_BUILD_TYPE=Release -DVL_GUI_GLFW3_SUPPORT=ON -DVL_INSTALL_DATA=ON -DCMAKE_INSTALL_PREFIX="%APPVEYOR_BUILD_FOLDER%/build/vl-sdk"
+  - cmake ../../external/Visualization_Library/ -DCMAKE_BUILD_TYPE=Release -DVL_GUI_GLFW3_SUPPORT=ON -DVL_INSTALL_DATA=ON -DCMAKE_INSTALL_PREFIX="%APPVEYOR_BUILD_FOLDER%/build/vl-sdk"
   - cmake --build . --target install --config Release
   - cd ..
   - mkdir occ
