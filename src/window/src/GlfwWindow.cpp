@@ -1,5 +1,7 @@
 #include "GlfwWindow.hpp"
 
+#include <string>
+
 #include "utils/vl/Log.hpp"
 #include "utils/vl/MakeRef.hpp"
 
@@ -44,9 +46,11 @@ GlfwWindow::GlfwWindow(const vl::String& windowName,
     // glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
     // glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
+    Debug("Initialization glfw window");
     constexpr auto x = 0, y = 0;
-    window->initGLFWWindow(
+    const auto status = window->initGLFWWindow(
         windowName, prepareContextFormat(), widthScreen, heightScreen);
+    Debug("Initialization glfw window finished with success: " + std::to_string(status));
 }
 
 void GlfwWindow::addEventListener(vl::UIEventListener* listener)

@@ -36,6 +36,7 @@ std::unique_ptr<GhostCamerasHolder> initializeCameras()
 DoubleCamera::DoubleCamera(std::shared_ptr<Window> window)
     : cameras{initializeCameras()}, window{std::move(window)}
 {
+    Debug("Construct double camera");
     enableDisableCameras();
 }
 
