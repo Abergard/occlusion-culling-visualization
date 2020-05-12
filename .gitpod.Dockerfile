@@ -9,5 +9,7 @@ USER gitpod
 #
 # More information: https://www.gitpod.io/docs/config-docker/
 
-RUN apt-get update && apt-get install -y \
-  libgl1-mesa-dev
+RUN sudo apt-get update
+
+#RUN apt-get update && apt-get install -y \
+ # libgl1-mesa-dev
