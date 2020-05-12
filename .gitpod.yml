@@ -1,0 +1,10 @@
+image:
+  file: .gitpod.Dockerfile
+tasks:
+- command: >
+  mkdir build && 
+  cd build &&
+  export build_dir=`pwd` &&
+  mkdir vl &&
+  cd vl &&
+  cmake ../../external/Visualization_Library -DCMAKE_BUILD_TYPE=Release -DVL_GUI_GLFW_SUPPORT=ON -DVL_INSTALL_DATA=ON -DCMAKE_INSTALL_PREFIX=$build_dir/vl-sdk
