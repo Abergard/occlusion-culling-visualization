@@ -5,6 +5,7 @@ tasks:
       cd vl && cmake ../../external/Visualization_Library 
         -DCMAKE_BUILD_TYPE=Release 
         -DVL_GUI_GLFW_SUPPORT=ON 
+        -DVL_GUI_GLFW_EXAMPLES=OFF
         -DVL_INSTALL_DATA=ON 
         -DCMAKE_INSTALL_PREFIX=$build_dir/vl-sdk 
         -Wno-dev && 
@@ -14,6 +15,7 @@ tasks:
         -DCMAKE_BUILD_TYPE=Release 
         -DVL_ROOT=$build_dir/vl-sdk 
         -DCMAKE_INSTALL_PREFIX=$build_dir/occ-app 
+        -DWin32App=OFF
         -Wno-dev
       cmake --build . --target install --config Release
       
