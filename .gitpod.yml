@@ -8,12 +8,14 @@ tasks:
         -DVL_INSTALL_DATA=ON 
         -DCMAKE_INSTALL_PREFIX=$build_dir/vl-sdk 
         -Wno-dev && 
-        cd ../ &&
+      cmake --build . --target install --config Release &&
+      cd ../ &&
       cd occ && cmake ../../ 
         -DCMAKE_BUILD_TYPE=Release 
         -DVL_ROOT=$build_dir/vl-sdk 
         -DCMAKE_INSTALL_PREFIX=$build_dir/occ-app 
         -Wno-dev
+      cmake --build . --target install --config Release
       
 ports:
   - port: 8000
