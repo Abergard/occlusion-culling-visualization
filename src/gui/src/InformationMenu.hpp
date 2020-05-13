@@ -7,7 +7,7 @@
 #include <vlGraphics/Text.hpp>
 
 #include "camera/DoubleCamera.hpp"
-#include "menu.hpp"
+#include "Menu.hpp"
 #include "utils/FpsCounter.hpp"
 #include "utils/OcclusionStatistics.hpp"
 #include "utils/VisualizationState.hpp"

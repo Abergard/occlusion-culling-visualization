@@ -24,13 +24,18 @@ target_include_directories(occlusion-culling-visualization
 
 target_link_libraries(occlusion-culling-visualization
   PRIVATE ${VL_LIBRARIES} ${OPENGL_LIBRARIES}
-          camera utils window view input)
+  camera utils window view input)
+
+# target_compile_options(occlusion-culling-visualization
+#   PRIVATE /W4)
 
 target_compile_options(occlusion-culling-visualization
-  PRIVATE /W4)
-  
+  PRIVATE -Wall -pedantic)
+
 install (TARGETS occlusion-culling-visualization
-  RUNTIME DESTINATION ./bin
+  RUNTIME DESTINATION bin
+  LIBRARY DESTINATION lib
+  ARCHIVE DESTINATION lib/static
   COMPONENT OCVexe)
 
 install(FILES
@@ -43,17 +48,29 @@ install(DIRECTORY
   DESTINATION ./data
   COMPONENT DATA)
 
-install(FILES
-  ${VL_ROOT}/bin/VLCore.dll
-  ${VL_ROOT}/bin/VLGraphics.dll
-  ${VL_ROOT}/bin/VLVG.dll
-  ${VL_ROOT}/bin/VLX.dll
-  ${VL_ROOT}/bin/VLVolume.dll
-  ${VL_ROOT}/bin/VLMolecule.dll
-  ${VL_ROOT}/bin/VLWin32.dll
-  ${VL_ROOT}/bin/VLMain.dll
-  DESTINATION ./bin
-  COMPONENT VLDLL)
+if(WIN32)
+  install(FILES
+    ${VL_ROOT}/bin/VLCore.dll
+    ${VL_ROOT}/bin/VLGraphics.dll
+    ${VL_ROOT}/bin/VLVG.dll
+    ${VL_ROOT}/bin/VLX.dll
+    ${VL_ROOT}/bin/VLVolume.dll
+    ${VL_ROOT}/bin/VLMolecule.dll
+    ${VL_ROOT}/bin/VLGLFW.dll
+    ${VL_ROOT}/bin/VLMain.dll
+    ${CMAKE_CURRENT_BINARY_DIR}/glfw3.dll
+    DESTINATION bin
+    COMPONENT VLDLL)
+else()
+  set_target_properties(occlusion-culling-visualization PROPERTIES INSTALL_RPATH "./lib")
+  message(STATUS "kabuum: ${VL_ROOT}")
+   install(DIRECTORY ${VL_ROOT}/lib
+     DESTINATION .
+     COMPONENT VLDLL
+     FILES_MATCHING PATTERN "*.so*"
+     )
+endif()
+
 
 set(CPACK_PACKAGE_NAME "OcclusionCullingVisualizationInstaller")
 set(CPACK_PACKAGE_VENDOR "Abergard")

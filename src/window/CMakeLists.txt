@@ -1,12 +1,15 @@
+find_package(glfw3 3.3 CONFIG REQUIRED)
+
 add_library(window
   src/Window.cpp
-  src/Win32Window.cpp)
+  # src/Win32Window.cpp
+  src/GlfwWindow.cpp)
 
 target_include_directories(window
   PRIVATE include/window ${VL_INCLUDE_DIRS}
   PUBLIC include)
 
 target_link_libraries(window
-  utils ${VL_LIBRARIES})
+  utils ${VL_LIBRARIES} glfw)
 
 

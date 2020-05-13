@@ -6,12 +6,12 @@
 #include <memory>
 #include <vlCore/vlnamespace.hpp>
 
+#include "VisualizationCommand.hpp"
 #include "utils/DefaultUiEventListener.hpp"
 
 namespace ocv
 {
 class VisualizationView;
-class VisualizationCommand;
 class WholeApplicationVlController : public DefaultUiEventListener
 {
 public:

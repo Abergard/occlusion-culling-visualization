@@ -1,0 +1,44 @@
+skip_tags: true
+
+version: '0.0.{build}'
+
+image:
+  - Visual Studio 2019
+
+build:
+  verbosity: detailed
+
+environment:
+  package_name: occlusion-culling-visualization.exe
+
+platform:
+  - x64
+
+cache:
+  - c:\projects\deps -> .appveyor.yml
+
+install:
+  - set BOOST_ROOT=C:\Libraries\boost_1_71_0
+
+before_build:
+  - call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars64.bat"
+  - cd %APPVEYOR_BUILD_FOLDER%
+  - git submodule init
+  - git submodule update
+
+build_script:
+  - nproc
+  - mkdir build
+  - cd build
+  - mkdir vl
+  - cd vl
+  - cmake ../../external/Visualization_Library/ -DCMAKE_BUILD_TYPE=Release -DVL_GUI_GLFW_SUPPORT=ON -DVL_INSTALL_DATA=ON -DCMAKE_INSTALL_PREFIX="%APPVEYOR_BUILD_FOLDER%/build/vl-sdk"
+  - cmake --build . --target install --config Release
+  - cd ..
+  - mkdir occ
+  - cd occ
+  - cmake ../.. -DCMAKE_BUILD_TYPE=Release -DVL_ROOT="%APPVEYOR_BUILD_FOLDER%/build/vl-sdk" -DCMAKE_INSTALL_PREFIX="%APPVEYOR_BUILD_FOLDER%/build/occ-sdk" -Wno-dev
+  - cmake --build . --target install --config Release -j 2
+
+matrix:
+  fast_finish: true

@@ -17,11 +17,11 @@ struct ScreenSize
     int height;
 };
 
-ScreenSize getFullScreenSize()
-{
-    return ScreenSize{GetSystemMetrics(SM_CXSCREEN),
-                      GetSystemMetrics(SM_CYSCREEN)};
-}
+// ScreenSize getFullScreenSize()
+// {
+//     return ScreenSize{GetSystemMetrics(SM_CXSCREEN),
+//                       GetSystemMetrics(SM_CYSCREEN)};
+// }
 
 int start(const ScreenSize& mainScreen)
 try
@@ -34,8 +34,6 @@ try
 
     constexpr auto windowTitle{"Occlusion Culling"};
 
-    // const auto window = std::shared_ptr<ocv::Window>(ocv::createWin32Window(
-    //     windowTitle, mainScreen.width, mainScreen.height));
     const auto window = std::shared_ptr<ocv::Window>(ocv::createGlfwWindow(
         windowTitle, mainScreen.width, mainScreen.height));
     const auto camera = std::make_shared<ocv::DoubleCamera>(window);

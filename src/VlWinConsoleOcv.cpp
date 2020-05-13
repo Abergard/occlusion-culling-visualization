@@ -1,12 +1,13 @@
 #include <iostream>
 
-#include "VlWin32Ocv.hpp"
+// #include "VlWin32Ocv.hpp"
+#include "VlGlfwOcv.hpp"
 
 ScreenSize getScreenSize(const int argc, const char* argv[])
 try
 {
-    if (argc != 3)
-        return getFullScreenSize();
+    // if (argc != 3)
+    //     return getFullScreenSize();
 
     return ScreenSize{std::stoi(argv[1]), std::stoi(argv[2])};
 }
