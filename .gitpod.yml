@@ -8,7 +8,7 @@ tasks:
         -DVL_INSTALL_DATA=ON 
         -DCMAKE_INSTALL_PREFIX=$build_dir/vl-sdk 
         -Wno-dev && 
-        cd ../
+        cd ../ &&
       cd occ && cmake ../../ 
         -DCMAKE_BUILD_TYPE=Release 
         -DVL_ROOT=$build_dir/vl-sdk 
