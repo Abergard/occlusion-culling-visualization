@@ -2,16 +2,16 @@ image:
   file: .gitpod.Dockerfile
 tasks:
   - command: mkdir build && cd build && export build_dir=`pwd` && mkdir vl && mkdir occ &&
-      cd vl && cmake ../../external/Visualization_Library \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DVL_GUI_GLFW_SUPPORT=ON \
-        -DVL_INSTALL_DATA=ON \
-        -DCMAKE_INSTALL_PREFIX=$build_dir/vl-sdk \
-        -Wno-dev &&
-      cd occ && cmake ../../ \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DVL_ROOT=$build_dir/vl-sdk \
-        -DCMAKE_INSTALL_PREFIX=$build_dir/occ-app \
+  - command: cd vl && cmake ../../external/Visualization_Library 
+        -DCMAKE_BUILD_TYPE=Release 
+        -DVL_GUI_GLFW_SUPPORT=ON 
+        -DVL_INSTALL_DATA=ON 
+        -DCMAKE_INSTALL_PREFIX=$build_dir/vl-sdk 
+        -Wno-dev
+  - command: cd occ && cmake ../../ 
+        -DCMAKE_BUILD_TYPE=Release 
+        -DVL_ROOT=$build_dir/vl-sdk 
+        -DCMAKE_INSTALL_PREFIX=$build_dir/occ-app 
         -Wno-dev
       
 ports:
