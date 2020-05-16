@@ -4,12 +4,13 @@
 
 #include "WholeApplicationVlController.hpp"
 #include "view/VisualizationView.hpp"
+#include "utils/vl/MakeRef.hpp"
 
 namespace ocv
 {
-std::unique_ptr<DefaultUiEventListener>
-    createWholeAppController(std::shared_ptr<VisualizationView> view)
+vl::ref<DefaultUiEventListener>
+    createWholeAppController(VisualizationView& view)
 {
-    return std::make_unique<WholeApplicationVlController>(std::move(view));
+    return ocv::make_ref<WholeApplicationVlController>(view);
 }
 }

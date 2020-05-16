@@ -6,6 +6,6 @@ namespace ocv
 {
 void ToggleMenu::execute()
 {
-    view->toggleMenu();
+    view.toggleMenu();
 }
 }

@@ -6,6 +6,6 @@ namespace ocv
 {
 void ToggleView::execute()
 {
-    view->switchBetweenMainAndSecondView();
+    view.switchBetweenMainAndSecondView();
 }
 }

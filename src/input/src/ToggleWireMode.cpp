@@ -6,6 +6,6 @@ namespace ocv
 {
 void ToggleWireMode::execute()
 {
-    view->enableDisableWireModeForOcluded();
+    view.enableDisableWireModeForOcluded();
 }
 }

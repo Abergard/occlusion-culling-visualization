@@ -6,6 +6,6 @@ namespace ocv
 {
 void ToggleObserverAABBDraw::execute()
 {
-    view->toggleObservatorAABBDraw();
+    view.toggleObservatorAABBDraw();
 }
 }

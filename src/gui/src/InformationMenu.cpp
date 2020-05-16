@@ -92,7 +92,7 @@ std::string toStatus(bool status)
 InformationMenu::InformationMenu(
     vl::OpenGLContext* context,
     std::shared_ptr<OcclusionStatistics> statisticScene,
-    std::shared_ptr<DoubleCamera> camera,
+    DoubleCamera& camera,
     std::shared_ptr<PlayerVisualizationState> playerState,
     std::shared_ptr<ObservatorVisualizationState> observatorState,
     std::shared_ptr<bool> preview,
@@ -101,7 +101,7 @@ InformationMenu::InformationMenu(
     vl::ActorTreeAbstract* observatorTree)
     : openglContext{context},
       statistics{std::move(statisticScene)},
-      doubleCamera{std::move(camera)},
+      doubleCamera{camera},
       playerVisualizationState{std::move(playerState)},
       observatorVisualizationState{std::move(observatorState)},
       previewEnabled{std::move(preview)},
@@ -188,7 +188,7 @@ vl::String InformationMenu::getCurrentMenuContent(
     const ViewType occlusionViewType,
     const bool isSecondViewActivated) const
 {
-    const auto activeUser = doubleCamera->activeCamera();
+    const auto activeUser = doubleCamera.activeCamera();
     if (activeUser == CameraType::Editor)
     {
         return getMenuWhenEditorMode();

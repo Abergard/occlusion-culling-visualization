@@ -2,12 +2,12 @@
 
 #include <memory>
 #include <vlCore/vlnamespace.hpp>
+#include <vlCore/Object.hpp>
 
 namespace ocv
 {
 class DefaultUiEventListener;
 class VisualizationView;
 
-std::unique_ptr<DefaultUiEventListener>
-    createWholeAppController(std::shared_ptr<VisualizationView>);
+vl::ref<DefaultUiEventListener> createWholeAppController(VisualizationView&);
 }

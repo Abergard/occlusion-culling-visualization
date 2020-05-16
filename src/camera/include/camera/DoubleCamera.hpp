@@ -19,7 +19,7 @@ class Window;
 class DoubleCamera : public DefaultUiEventListener
 {
 public:
-    DoubleCamera(std::shared_ptr<Window> window);
+    DoubleCamera(Window& window);
     ~DoubleCamera();
 
     void addedListenerEvent(vl::OpenGLContext*) override;
@@ -35,7 +35,7 @@ public:
 
 private:
     std::unique_ptr<GhostCamerasHolder> cameras;
-    std::shared_ptr<Window> window;
+    Window& window;
 
     bool areCamerasDisabled{true};
 

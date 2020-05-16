@@ -33,14 +33,17 @@ std::unique_ptr<GhostCamerasHolder> initializeCameras()
 }
 }
 
-DoubleCamera::DoubleCamera(std::shared_ptr<Window> window)
-    : cameras{initializeCameras()}, window{std::move(window)}
+DoubleCamera::DoubleCamera(Window& window)
+    : cameras{initializeCameras()}, window{window}
 {
     Debug("Construct double camera");
     enableDisableCameras();
 }
 
-DoubleCamera::~DoubleCamera() = default;
+DoubleCamera::~DoubleCamera()
+{
+    
+}
 
 void DoubleCamera::addedListenerEvent(vl::OpenGLContext* oglContext)
 {
@@ -59,13 +62,13 @@ void DoubleCamera::enableDisableCameras()
     areCamerasDisabled = !areCamerasDisabled;
     if (areCamerasDisabled)
     {
-        window->setMouseVisible(true);
+        window.setMouseVisible(true);
         cameras->player->setEnabled(false);
         cameras->observator->setEnabled(false);
     }
     else
     {
-        window->setMouseVisible(false);
+        window.setMouseVisible(false);
         cameras->player->setEnabled(isFirstEnabled);
         cameras->observator->setEnabled(isSecondEnabled);
     }

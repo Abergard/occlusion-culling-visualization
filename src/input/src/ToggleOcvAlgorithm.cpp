@@ -6,6 +6,6 @@ namespace ocv
 {
 void ToggleOcvAlgorithm::execute()
 {
-    view->enableDisableOcclusionCulling();
+    view.enableDisableOcclusionCulling();
 }
 }

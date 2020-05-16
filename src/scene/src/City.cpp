@@ -40,8 +40,8 @@ auto createGround(float groundSize)
 }
 }
 
-City::City(std::shared_ptr<DoubleCamera> doubleCamera)
-    : cameras{std::move(doubleCamera)}
+City::City(DoubleCamera& doubleCamera)
+    : cameras{doubleCamera}
 {
     prepareCity(mSceneManagerActorTree->tree());
 }
@@ -111,7 +111,7 @@ void City::prepareCity(vl::ref<vl::ActorTreeAbstract> tree)
     auto player =
         make_ref<vl::Transform>(vl::mat4::getTranslation(200, 10, 60));
     player->addChild(playerTransform.get());
-    cameras->playerCamera()->bindTransform(player.get());
+    cameras.playerCamera()->bindTransform(player.get());
 
     // Load city
     auto loader = createXmlBuildingLoader("../data/city.tmx");

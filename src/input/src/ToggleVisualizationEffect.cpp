@@ -6,6 +6,6 @@ namespace ocv
 {
 void ToggleVisualizationEffect::execute()
 {
-    view->enableDisableRenderingWhatPlayerRender();
+    view.enableDisableRenderingWhatPlayerRender();
 }
 }

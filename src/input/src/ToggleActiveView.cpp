@@ -6,6 +6,6 @@ namespace ocv
 {
 void ToggleActiveView::execute()
 {
-    view->toggleActiveView();
+    view.toggleActiveView();
 }
 }

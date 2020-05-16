@@ -6,6 +6,6 @@ namespace ocv
 {
 void ToggleSecondView::execute()
 {
-    view->hideOrShowSecondView();
+    view.hideOrShowSecondView();
 }
 }

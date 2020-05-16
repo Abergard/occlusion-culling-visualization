@@ -28,7 +28,7 @@ public:
 std::unique_ptr<menu>
     createInformationMenu(vl::OpenGLContext* context,
                           std::shared_ptr<OcclusionStatistics>,
-                          std::shared_ptr<DoubleCamera>,
+                          DoubleCamera&,
                           std::shared_ptr<PlayerVisualizationState>,
                           std::shared_ptr<ObservatorVisualizationState>,
                           std::shared_ptr<bool> preview,

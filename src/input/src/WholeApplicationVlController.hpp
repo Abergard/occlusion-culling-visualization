@@ -15,12 +15,12 @@ class VisualizationView;
 class WholeApplicationVlController : public DefaultUiEventListener
 {
 public:
-    WholeApplicationVlController(std::shared_ptr<VisualizationView>);
+    WholeApplicationVlController(VisualizationView&);
 
     void keyPressEvent(unsigned short /*ch*/, vl::EKey key) override;
 
 private:
     std::map<vl::EKey, std::unique_ptr<VisualizationCommand>> commands;
-    std::shared_ptr<VisualizationView> occlusionVisualizationView;
+    VisualizationView& occlusionVisualizationView;
 };
 }

@@ -13,7 +13,7 @@ namespace ocv
 class City
 {
 public:
-    City(std::shared_ptr<DoubleCamera>);
+    City(DoubleCamera&);
 
     vl::SceneManagerActorKdTree* sceneManager();
 
@@ -22,7 +22,7 @@ private:
     void generateTrees(vl::ref<vl::ActorTreeAbstract> tree, float groundSize);
 
     GlobalIllumination globalLights;
-    std::shared_ptr<DoubleCamera> cameras;
+    DoubleCamera& cameras;
 
     vl::ref<vl::SceneManagerActorKdTree> mSceneManagerActorTree =
         make_ref<vl::SceneManagerActorKdTree>();

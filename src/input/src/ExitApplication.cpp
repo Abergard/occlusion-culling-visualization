@@ -6,6 +6,6 @@ namespace ocv
 {
 void ExitApplication::execute()
 {
-    view->closeApplication();
+    view.closeApplication();
 }
 }

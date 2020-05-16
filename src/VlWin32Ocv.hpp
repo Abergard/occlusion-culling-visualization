@@ -36,21 +36,21 @@ try
 
     // const auto window = std::shared_ptr<ocv::Window>(ocv::createWin32Window(
     //     windowTitle, mainScreen.width, mainScreen.height));
-    const auto window = std::shared_ptr<ocv::Window>(ocv::createGlfwWindow(
-        windowTitle, mainScreen.width, mainScreen.height));
-    const auto camera = std::make_shared<ocv::DoubleCamera>(window);
+    const auto window = ocv::createGlfwWindow(
+        windowTitle, mainScreen.width, mainScreen.height);
+    const auto camera = std::make_shared<ocv::DoubleCamera>(*window);
     const auto view = std::shared_ptr<ocv::VisualizationView>(
-        createVisualizationView(window, camera));
+        createVisualizationView(*window, camera));
     const auto viewController = createWholeAppController(view);
 
     Debug("Add event listeners");
-    window->addEventListener(view.get());
-    window->addEventListener(viewController.get());
-    window->addEventListener(camera.get());
-    window->show();
+    window.addEventListener(view.get());
+    window.addEventListener(viewController.get());
+    window.addEventListener(camera.get());
+    window.show();
 
     Debug("Start main loop");
-    auto const result = window->messageLoop();
+    auto const result = window.messageLoop();
     Debug("Exit with result: " + std::to_string(result));
 
     vl::VisualizationLibrary::shutdown();

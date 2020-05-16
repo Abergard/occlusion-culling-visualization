@@ -6,6 +6,6 @@ namespace ocv
 {
 void TogglePlayerAABBDraw::execute()
 {
-    view->togglePlayerAABBDraw();
+    view.togglePlayerAABBDraw();
 }
 }

@@ -6,6 +6,6 @@ namespace ocv
 {
 void ToggleEditorMode::execute()
 {
-    view->enterExitEditorMode();
+    view.enterExitEditorMode();
 }
 }

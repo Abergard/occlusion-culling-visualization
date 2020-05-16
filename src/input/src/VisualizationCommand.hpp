@@ -8,8 +8,8 @@ class VisualizationView;
 class VisualizationCommand
 {
 public:
-    VisualizationCommand(std::shared_ptr<VisualizationView> ocvView)
-        : view{std::move(ocvView)}
+    VisualizationCommand(VisualizationView& ocvView)
+        : view{ocvView}
     {
     }
 
@@ -17,6 +17,6 @@ public:
     virtual void execute() = 0;
 
 protected:
-    std::shared_ptr<VisualizationView> view;
+    VisualizationView& view;
 };
 }

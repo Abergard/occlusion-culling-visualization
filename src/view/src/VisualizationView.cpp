@@ -51,16 +51,16 @@ bool operator!=(const ViewType mainView, const CameraType camera)
 }
 
 VisualizationView::VisualizationView(
-    std::shared_ptr<Window> window,
-    std::shared_ptr<DoubleCamera> camera,
+    Window& window,
+    DoubleCamera& camera,
     std::shared_ptr<PlayerVisualizationState> playerState,
     std::shared_ptr<ObservatorVisualizationState> observatorState,
     std::shared_ptr<OcclusionStatistics> statistics,
     std::shared_ptr<bool> preview,
     vl::Renderer* player,
     vl::Renderer* observator)
-    : framebuffer{window->framebuffer()},
-      doubleCamera{std::move(camera)},
+    : framebuffer{window.framebuffer()},
+      doubleCamera{camera},
       city{doubleCamera},
       playerVisualizationState{std::move(playerState)},
       observatorVisualizationState{std::move(observatorState)},
@@ -87,8 +87,6 @@ VisualizationView::VisualizationView(
     {
         Debug("view disabled");
     }
-
-    VL_CHECK(window);
 
     auto sorter = make_ref<vl::RenderQueueSorterOcclusion>();
     playerRendering->setRenderQueueSorter(sorter.get());
@@ -125,7 +123,7 @@ void VisualizationView::initEvent()
 
     Debug("need to transform");
     playerRendering->transform()->addChild(
-        doubleCamera->playerCamera()->boundTransform());
+        doubleCamera.playerCamera()->boundTransform());
 }
 
 void VisualizationView::attachRenderings()
@@ -171,8 +169,8 @@ void VisualizationView::preparePreviewView()
 void VisualizationView::attachCameras()
 {
     Trace();
-    observatorRendering->setCamera(doubleCamera->observatorCamera());
-    playerRendering->setCamera(doubleCamera->playerCamera());
+    observatorRendering->setCamera(doubleCamera.observatorCamera());
+    playerRendering->setCamera(doubleCamera.playerCamera());
 }
 
 void VisualizationView::switchMainSecondView()
@@ -343,25 +341,25 @@ void VisualizationView::toggleActiveView()
 {
     if (*previewEnabled || *currentMainView == ViewType::Observator)
     {
-        doubleCamera->switchActiveCamera();
+        doubleCamera.switchActiveCamera();
     }
 }
 
 void VisualizationView::enterExitEditorMode()
 {
     Trace();
-    doubleCamera->enableDisableCameras();
+    doubleCamera.enableDisableCameras();
 }
 
 void VisualizationView::switchBetweenMainAndSecondView()
 {
     Trace();
     switchMainSecondView();
-    if (!*previewEnabled && *currentMainView != doubleCamera->activeCamera())
+    if (!*previewEnabled && *currentMainView != doubleCamera.activeCamera())
     {
-        doubleCamera->switchActiveCamera();
+        doubleCamera.switchActiveCamera();
     }
-    doubleCamera->updateMouse();
+    doubleCamera.updateMouse();
 }
 
 void VisualizationView::toggleMenu()
@@ -375,8 +373,8 @@ void VisualizationView::closeApplication()
 }
 
 std::unique_ptr<VisualizationView>
-    createVisualizationView(std::shared_ptr<Window> window,
-                            std::shared_ptr<DoubleCamera> camera)
+    createVisualizationView(Window& window,
+                            DoubleCamera& camera)
 {
     auto playerVisualizationState =
         std::make_shared<ocv::PlayerVisualizationState>();
@@ -392,8 +390,8 @@ std::unique_ptr<VisualizationView>
     std::shared_ptr<bool> previewEnabled{std::make_shared<bool>(false)};
 
     return std::make_unique<ocv::VisualizationView>(
-        std::move(window),
-        std::move(camera),
+        window,
+        camera,
         playerVisualizationState,
         observatorVisualizationState,
         statistics,

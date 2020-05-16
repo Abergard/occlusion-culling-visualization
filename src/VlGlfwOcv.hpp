@@ -10,6 +10,7 @@
 #include "utils/vl/Log.hpp"
 #include "view/VisualizationView.hpp"
 #include "window/Window.hpp"
+#include "utils/vl/MakeRef.hpp"
 
 struct ScreenSize
 {
@@ -32,12 +33,12 @@ int run_app(const ScreenSize& mainScreen)
 
     constexpr auto windowTitle{"Occlusion Culling"};
 
-    const auto window = std::shared_ptr<ocv::Window>(ocv::createGlfwWindow(
-        windowTitle, mainScreen.width, mainScreen.height));
-    const auto camera = std::make_shared<ocv::DoubleCamera>(window);
-    const auto view = std::shared_ptr<ocv::VisualizationView>(
-        createVisualizationView(window, camera));
-    const auto viewController = createWholeAppController(view);
+    const std::unique_ptr<ocv::Window> window = ocv::createGlfwWindow(
+        windowTitle, mainScreen.width, mainScreen.height);
+    auto camera = ocv::make_ref<ocv::DoubleCamera>(*window);
+    auto view = ocv::make_ref<ocv::VisualizationView>(
+        createVisualizationView(*window, *camera));
+    auto viewController = createWholeAppController(*view);
 
     Debug("Add event listeners");
     window->addEventListener(view.get());

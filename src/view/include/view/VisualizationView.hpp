@@ -21,8 +21,8 @@ namespace ocv
 class VisualizationView : public DefaultUiEventListener
 {
 public:
-    VisualizationView(std::shared_ptr<Window>,
-                      std::shared_ptr<DoubleCamera>,
+    VisualizationView(Window&,
+                      DoubleCamera&,
                       std::shared_ptr<PlayerVisualizationState>,
                       std::shared_ptr<ObservatorVisualizationState>,
                       std::shared_ptr<OcclusionStatistics>,
@@ -80,7 +80,7 @@ private:
         std::make_shared<ViewType>(ViewType::Player)};
 
     vl::ref<vl::Framebuffer> framebuffer;
-    std::shared_ptr<DoubleCamera> doubleCamera;
+    DoubleCamera& doubleCamera;
     City city;
 
     std::shared_ptr<PlayerVisualizationState> playerVisualizationState;
@@ -93,7 +93,7 @@ private:
 };
 
 std::unique_ptr<VisualizationView>
-    createVisualizationView(std::shared_ptr<Window>,
-                            std::shared_ptr<DoubleCamera>);
+    createVisualizationView(Window&,
+                            DoubleCamera&);
 
 }

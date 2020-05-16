@@ -20,7 +20,7 @@ class InformationMenu : public menu
 public:
     InformationMenu(vl::OpenGLContext* context,
                     std::shared_ptr<OcclusionStatistics>,
-                    std::shared_ptr<DoubleCamera>,
+                    DoubleCamera&,
                     std::shared_ptr<PlayerVisualizationState>,
                     std::shared_ptr<ObservatorVisualizationState>,
                     std::shared_ptr<bool> preview,
@@ -49,7 +49,7 @@ private:
 
     vl::ref<vl::OpenGLContext> openglContext;
     std::shared_ptr<OcclusionStatistics> statistics;
-    std::shared_ptr<DoubleCamera> doubleCamera;
+    DoubleCamera& doubleCamera;
     std::shared_ptr<PlayerVisualizationState> playerVisualizationState;
     std::shared_ptr<ObservatorVisualizationState> observatorVisualizationState;
     std::shared_ptr<bool> previewEnabled;

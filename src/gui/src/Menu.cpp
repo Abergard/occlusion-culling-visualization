@@ -10,7 +10,7 @@ namespace ocv
 std::unique_ptr<menu> createInformationMenu(
     vl::OpenGLContext* context,
     std::shared_ptr<OcclusionStatistics> statistics,
-    std::shared_ptr<DoubleCamera> camera,
+    DoubleCamera& camera,
     std::shared_ptr<PlayerVisualizationState> playerState,
     std::shared_ptr<ObservatorVisualizationState> obsevatorState,
     std::shared_ptr<bool> preview,
@@ -20,7 +20,7 @@ std::unique_ptr<menu> createInformationMenu(
 {
     return std::make_unique<InformationMenu>(context,
                                              std::move(statistics),
-                                             std::move(camera),
+                                             camera,
                                              std::move(playerState),
                                              std::move(obsevatorState),
                                              std::move(preview),

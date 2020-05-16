@@ -44,7 +44,7 @@ auto createMap(Args&&... args)
 }
 
 WholeApplicationVlController::WholeApplicationVlController(
-    std::shared_ptr<VisualizationView> view)
+    VisualizationView& view)
     : commands{createMap<VisualizationCommand,
                           VlPair<vl::Key_1, ToggleOcvAlgorithm>,
                           VlPair<vl::Key_2, ToggleVisualizationEffect>,
@@ -57,7 +57,7 @@ WholeApplicationVlController::WholeApplicationVlController(
                           VlPair<vl::Key_Return, ToggleEditorMode>,
                           VlPair<vl::Key_Space, ToggleSecondView>,
                           VlPair<vl::Key_Escape, ExitApplication>>(view)},
-      occlusionVisualizationView{std::move(view)}
+      occlusionVisualizationView{view}
 {
 }
 
