@@ -24,7 +24,8 @@ find_package(VL COMPONENTS
   # VLWin32
   # VLGflw
   VLGLFW
-  VLMain REQUIRED)
+  VLMain
+REQUIRED)
 
 if(OCV_TESTS)
   set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)

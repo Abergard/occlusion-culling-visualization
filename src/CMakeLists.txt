@@ -23,7 +23,7 @@ target_include_directories(occlusion-culling-visualization
   PRIVATE ${VL_INCLUDE_DIRS})
 
 target_link_libraries(occlusion-culling-visualization
-  PRIVATE ${VL_LIBRARIES} ${OPENGL_LIBRARIES}
+  PRIVATE ${VL_LIBRARIES} ${OPENGL_LIBRARIES} ${VL_LIBS_EXAMPLE} ${GLFW_LIBRARIES}
   camera utils window view input)
 
 # target_compile_options(occlusion-culling-visualization
@@ -62,7 +62,7 @@ if(WIN32)
     DESTINATION bin
     COMPONENT VLDLL)
 else()
-  set_target_properties(occlusion-culling-visualization PROPERTIES INSTALL_RPATH "./lib")
+  set_target_properties(occlusion-culling-visualization PROPERTIES INSTALL_RPATH "../lib")
   message(STATUS "kabuum: ${VL_ROOT}")
    install(DIRECTORY ${VL_ROOT}/lib
      DESTINATION .

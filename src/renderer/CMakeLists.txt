@@ -10,4 +10,5 @@ target_include_directories(renderer
 
 target_link_libraries(renderer
   PRIVATE utils # scene
+  GL
   ${VL_LIBRARIES})

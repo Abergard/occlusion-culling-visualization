@@ -23,10 +23,8 @@ struct ScreenSize
 //                       GetSystemMetrics(SM_CYSCREEN)};
 // }
 
-int start(const ScreenSize& mainScreen)
-try
+int run_app(const ScreenSize& mainScreen)
 {
-    vl::VisualizationLibrary::init();
     Debug("Win32 main");
 
     Debug("width: " + std::to_string(mainScreen.width));
@@ -50,7 +48,14 @@ try
     Debug("Start main loop");
     auto const result = window->messageLoop();
     Debug("Exit with result: " + std::to_string(result));
+    return result;
+}
 
+int start(const ScreenSize& mainScreen)
+try
+{
+    vl::VisualizationLibrary::init();
+    const auto result = run_app(mainScreen);
     vl::VisualizationLibrary::shutdown();
     return result;
 }
