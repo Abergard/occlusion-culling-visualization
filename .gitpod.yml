@@ -1,22 +1,11 @@
 image:
   file: Dockerfile
 tasks:
-  - init: mkdir -p build/vl && mkdir -p build/occ && 
-      (cd build/vl && cmake ../../external/Visualization_Library 
-        -DCMAKE_BUILD_TYPE=Release 
-        -DVL_GUI_GLFW_SUPPORT=ON 
-        -DVL_GUI_GLFW_EXAMPLES=OFF
-        -DVL_INSTALL_DATA=ON 
-        -DCMAKE_INSTALL_PREFIX=/workspace/vl-sdk 
-        -Wno-dev && 
-      cmake --build . --target install --config Release -- -j 16) &&
-      (cd build/occ && cmake ../../ 
-        -DCMAKE_BUILD_TYPE=Release 
-        -DVL_ROOT=/workspace/vl-sdk 
-        -DCMAKE_INSTALL_PREFIX=/workspace/occ-app
-        -DWin32App=OFF
-        -Wno-dev &&
-      cmake --build . --target install --config Release -- -j 16)
+  - init: (cd external/VisualizationLibrary && git apply ../../patches/vl.diff) && (cd src && git apply ../patches/occ.diff) && 
+      mkdir -p /workspace/build/vl && mkdir -p /workspace/build/occ && 
+      (cd /workspace/build/vl && cmake ../../occlusion-culling-visualization/external/Visualization_Library -DCMAKE_BUILD_TYPE=Release -DVL_GUI_GLFW_SUPPORT=ON -DVL_GUI_GLFW_EXAMPLES=OFF -DVL_INSTALL_DATA=ON -DCMAKE_INSTALL_PREFIX=/workspace/vl-sdk -Wno-dev &&
+       cd ../occ && cmake ../../occlusion-culling-visualization -DCMAKE_BUILD_TYPE=Release -DVL_ROOT=/workspace/vl-sdk -DCMAKE_INSTALL_PREFIX=/workspace/occ-app -DWin32App=OFF -Wno-dev) &&
+      (cd /workspace/occlusion-culling-visualization/build/vl && cmake --build . --target install -- -j 16 && cd ../occ && cmake --build . --target install -- -j 16)
     command: (cd /workspace/occ-app/bin/ && LD_LIBRARY_PATH="../lib" ./occlusion-culling-visualization 1200 1600)
 ports:
   - port: 8000

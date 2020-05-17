@@ -1,0 +1,29 @@
+diff --git a/src/vlGraphics/GhostCameraManipulator.cpp b/src/vlGraphics/GhostCameraManipulator.cpp
+index ef18251e..e82bfd29 100644
+--- a/src/vlGraphics/GhostCameraManipulator.cpp
++++ b/src/vlGraphics/GhostCameraManipulator.cpp
+@@ -65,10 +65,21 @@ void GhostCameraManipulator::mouseMoveEvent(int x, int y)
+ 
+   int cx = (int)camera()->viewport()->center().x();
+   int cy = openglContext()->framebuffer()->height() - camera()->viewport()->height()/2 - camera()->viewport()->y();
+-  mXDegrees -= (y - cy) * mRotationSpeed;
+-  mYDegrees -= (x - cx) * mRotationSpeed;
++
++  static int lx = cx;
++  static int ly = cy;
++
++  int dx = (x - lx);
++  int dy = (y - ly);
++
++  mXDegrees -= dy * mRotationSpeed;
++  mYDegrees -= dx * mRotationSpeed;
++
+   openglContext()->ignoreNextMouseMoveEvent();
+-  openglContext()->setMousePosition(cx, cy);
++  //openglContext()->setMousePosition(cx, cy);
++
++  lx = x;
++  ly = y;
+ }
+ //-----------------------------------------------------------------------------
+ void GhostCameraManipulator::updateEvent()

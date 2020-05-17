@@ -1,0 +1,12 @@
+diff --git a/src/camera/src/DoubleCamera.cpp b/src/camera/src/DoubleCamera.cpp
+index 9274866..72c3735 100644
+--- a/src/camera/src/DoubleCamera.cpp
++++ b/src/camera/src/DoubleCamera.cpp
+@@ -83,6 +83,7 @@ void DoubleCamera::switchActiveCamera()
+         cameras->observator->setEnabled(!cameras->observator->isEnabled());
+         Debug("switch cameras done");
+     }
++    window.setMouseVisible(true);
+ }
+ 
+ CameraType DoubleCamera::activeCamera()
