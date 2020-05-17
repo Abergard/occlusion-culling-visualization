@@ -2,7 +2,7 @@ image:
   file: .gitpod.Dockerfile
 tasks:
   - init: mkdir -p build/vl && mkdir -p build/occ && 
-      (cd vl && cmake ../../external/Visualization_Library 
+      (cd build/vl && cmake ../../external/Visualization_Library 
         -DCMAKE_BUILD_TYPE=Release 
         -DVL_GUI_GLFW_SUPPORT=ON 
         -DVL_GUI_GLFW_EXAMPLES=OFF
@@ -10,7 +10,7 @@ tasks:
         -DCMAKE_INSTALL_PREFIX=/workspace/vl-sdk 
         -Wno-dev && 
       cmake --build . --target install --config Release -- -j 16) &&
-      (cd occ && cmake ../../ 
+      (cd build/occ && cmake ../../ 
         -DCMAKE_BUILD_TYPE=Release 
         -DVL_ROOT=/workspace/vl-sdk 
         -DCMAKE_INSTALL_PREFIX=/workspace/occ-app
