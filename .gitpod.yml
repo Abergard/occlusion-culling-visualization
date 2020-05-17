@@ -15,7 +15,7 @@ tasks:
         -DVL_ROOT=/workspace/vl-sdk 
         -DCMAKE_INSTALL_PREFIX=/workspace/occ-app
         -DWin32App=OFF
-        -Wno-dev
+        -Wno-dev &&
       cmake --build . --target install --config Release -- -j 16)
     command: (cd /workspace/occ-app/bin/ && LD_LIBRARY_PATH="../lib" ./occlusion-culling-visualization 1200 1600)
 ports:
