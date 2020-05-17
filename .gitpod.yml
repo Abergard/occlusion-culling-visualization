@@ -1,7 +1,7 @@
 image:
-  file: Dockerfile
+  file: .gitpod.Dockerfile
 tasks:
-  - init: (cd external/Visualization_Library && git apply ../../patches/vl.diff) && (cd src && git apply ../patches/occ.diff) && 
+  - init: (cd external/Visualization_Library && ls -al && git apply ../../patches/vl.diff) && (cd src && ls -al && git apply ../patches/occ.diff) && 
       mkdir -p /workspace/build/vl && mkdir -p /workspace/build/occ && 
       (cd /workspace/build/vl && 
        cmake ../../occlusion-culling-visualization/external/Visualization_Library -DCMAKE_BUILD_TYPE=Release -DVL_GUI_GLFW_SUPPORT=ON -DVL_GUI_GLFW_EXAMPLES=OFF -DVL_INSTALL_DATA=ON -DCMAKE_INSTALL_PREFIX=/workspace/vl-sdk -Wno-dev &&
