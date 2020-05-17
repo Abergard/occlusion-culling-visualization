@@ -11,7 +11,7 @@ set(VL_ROOT "${CMAKE_SOURCE_DIR}/external/Visualization_Library_SDK"
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${VL_ROOT}/cmake")
 
-# find_package(glfw3 3.3 REQUIRED)
+find_package(glfw3 3.3 REQUIRED)
 find_package(Boost 1.6 REQUIRED)
 find_package(OpenGL REQUIRED)
 find_package(VL COMPONENTS

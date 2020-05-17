@@ -7,7 +7,13 @@
 #include <shellapi.h>
 #include <string>
 
-#include "VlWin32Ocv.hpp"
+#include "VlGlfwOcv.hpp"
+
+ScreenSize getFullScreenSize()
+{
+    return ScreenSize{GetSystemMetrics(SM_CXSCREEN),
+                      GetSystemMetrics(SM_CYSCREEN)};
+}
 
 ScreenSize getScreenSize(PWSTR pCmdLine)
 {
@@ -15,7 +21,13 @@ ScreenSize getScreenSize(PWSTR pCmdLine)
     const auto argv = CommandLineToArgvW(pCmdLine, &argc);
 
     if (argc != 2)
+    {
+        MessageBox(nullptr,
+                   "get screensize",
+                   "get full screen",
+                   MB_OK | MB_ICONERROR);
         return getFullScreenSize();
+    }
 
     const auto mainScreen{ScreenSize{_wtoi(argv[0]), _wtoi(argv[1])}};
     if (mainScreen.width == 0 || mainScreen.height == 0)

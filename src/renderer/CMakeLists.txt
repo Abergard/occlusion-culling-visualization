@@ -9,6 +9,6 @@ target_include_directories(renderer
   PUBLIC include)
 
 target_link_libraries(renderer
-  PRIVATE utils # scene
-  GL
+  PRIVATE utils
+  ${OPENGL_LIBRARIES}
   ${VL_LIBRARIES})

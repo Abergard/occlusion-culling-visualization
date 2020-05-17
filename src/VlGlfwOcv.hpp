@@ -3,6 +3,8 @@
 #include <memory>
 #include <string>
 
+#include <GLFW/glfw3.h>
+
 #include <vlCore/VisualizationLibrary.hpp>
 
 #include "camera/DoubleCamera.hpp"
@@ -17,12 +19,6 @@ struct ScreenSize
     int width;
     int height;
 };
-
-// ScreenSize getFullScreenSize()
-// {
-//     return ScreenSize{GetSystemMetrics(SM_CXSCREEN),
-//                       GetSystemMetrics(SM_CYSCREEN)};
-// }
 
 int run_app(const ScreenSize& mainScreen)
 {

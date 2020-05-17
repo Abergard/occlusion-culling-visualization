@@ -24,7 +24,7 @@ target_include_directories(occlusion-culling-visualization
 
 target_link_libraries(occlusion-culling-visualization
   PRIVATE ${VL_LIBRARIES} ${OPENGL_LIBRARIES} ${VL_LIBS_EXAMPLE} ${GLFW_LIBRARIES}
-  camera utils window view input)
+  camera utils window view input glfw)
 
 # target_compile_options(occlusion-culling-visualization
 #   PRIVATE /W4)
