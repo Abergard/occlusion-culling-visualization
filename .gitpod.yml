@@ -1,7 +1,7 @@
 image:
   file: Dockerfile
 tasks:
-  - init: (cd external/VisualizationLibrary && git apply ../../patches/vl.diff) && (cd src && git apply ../patches/occ.diff) && 
+  - init: (cd external/Visualization_Library && git apply ../../patches/vl.diff) && (cd src && git apply ../patches/occ.diff) && 
       mkdir -p /workspace/build/vl && mkdir -p /workspace/build/occ && 
       (cd /workspace/build/vl && cmake ../../occlusion-culling-visualization/external/Visualization_Library -DCMAKE_BUILD_TYPE=Release -DVL_GUI_GLFW_SUPPORT=ON -DVL_GUI_GLFW_EXAMPLES=OFF -DVL_INSTALL_DATA=ON -DCMAKE_INSTALL_PREFIX=/workspace/vl-sdk -Wno-dev &&
        cd ../occ && cmake ../../occlusion-culling-visualization -DCMAKE_BUILD_TYPE=Release -DVL_ROOT=/workspace/vl-sdk -DCMAKE_INSTALL_PREFIX=/workspace/occ-app -DWin32App=OFF -Wno-dev) &&
