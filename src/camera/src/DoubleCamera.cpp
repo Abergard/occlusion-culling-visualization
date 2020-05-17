@@ -83,6 +83,7 @@ void DoubleCamera::switchActiveCamera()
         cameras->observator->setEnabled(!cameras->observator->isEnabled());
         Debug("switch cameras done");
     }
+    window.setMouseVisible(true);
 }
 
 CameraType DoubleCamera::activeCamera()
