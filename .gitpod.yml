@@ -12,7 +12,7 @@ tasks:
       alias rebuild='(cd /workspace/build/vl && cmake --build . --target install -- -j 16) && (cd /workspace/build/occ && cmake --build . --target install -- -j 16)' &&
       alias run='(cd /workspace/occ-app/bin && ./occlusion-culling-visualization 1200 1600)' &&
       export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/workspace/occ-app/lib"
-    command: run
+    command: (cd /workspace/occ-app/bin && ./occlusion-culling-visualization 1200 1600)
 ports:
   - port: 8000
     onOpen: open-preview
