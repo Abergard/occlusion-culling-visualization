@@ -1,7 +1,7 @@
 image:
   file: .gitpod.Dockerfile
 tasks:
-  - command: mkdir build && cd build && export build_dir=`pwd` && mkdir vl && mkdir occ && 
+  - init: mkdir build && cd build && export build_dir=`pwd` && mkdir vl && mkdir occ && 
       cd vl && cmake ../../external/Visualization_Library 
         -DCMAKE_BUILD_TYPE=Release 
         -DVL_GUI_GLFW_SUPPORT=ON 
@@ -18,7 +18,7 @@ tasks:
         -DWin32App=OFF
         -Wno-dev
       cmake --build . --target install --config Release
-      
+  - command: (cd build/occ-app/bin/ && LD_LIBRARY_PATH="../lib" ./occlusion-culling-visualization 1200 1600)
 ports:
   - port: 8000
     onOpen: open-preview
