@@ -24,7 +24,7 @@ Observator::Observator(vl::ref<vl::Camera> c)
     camera()->applyViewMatrix();
     camera()->applyProjMatrix();
 
-    mMovementSpeed = 1.0f;
+    mMovementSpeed = 80.0f;
 }
 
 void Observator::enableEvent(bool enabled)
