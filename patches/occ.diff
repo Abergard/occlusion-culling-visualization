@@ -1,7 +1,16 @@
 diff --git a/src/camera/src/DoubleCamera.cpp b/src/camera/src/DoubleCamera.cpp
-index 9274866..72c3735 100644
+index 9274866..34e5015 100644
 --- a/src/camera/src/DoubleCamera.cpp
 +++ b/src/camera/src/DoubleCamera.cpp
+@@ -68,7 +68,7 @@ void DoubleCamera::enableDisableCameras()
+     }
+     else
+     {
+-        window.setMouseVisible(false);
++        window.setMouseVisible(true);
+         cameras->player->setEnabled(isFirstEnabled);
+         cameras->observator->setEnabled(isSecondEnabled);
+     }
 @@ -83,6 +83,7 @@ void DoubleCamera::switchActiveCamera()
          cameras->observator->setEnabled(!cameras->observator->isEnabled());
          Debug("switch cameras done");

@@ -10,9 +10,9 @@ tasks:
        cmake ../../occlusion-culling-visualization -DCMAKE_BUILD_TYPE=Release -DVL_ROOT=/workspace/vl-sdk -DCMAKE_INSTALL_PREFIX=/workspace/occ-app -DWin32App=OFF -Wno-dev &&
        cmake --build . --target install -- -j 16) &&
       alias rebuild='(cd /workspace/build/vl && cmake --build . --target install -- -j 16) && (cd /workspace/build/occ && cmake --build . --target install -- -j 16)' &&
-      export PATH="$PATH:/workspace/occ-app/bin/" && 
-      export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:../lib"
-    command: occlusion-culling-visualization 1200 1600
+      alias run='(cd /workspace/occ-app/bin && ./occlusion-culling-visualization 1200 1600)' &&
+      export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/workspace/occ-app/lib"
+    command: run
 ports:
   - port: 8000
     onOpen: open-preview
