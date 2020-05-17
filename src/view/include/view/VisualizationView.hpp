@@ -92,7 +92,7 @@ private:
     int currentFramebufferHeight;
 };
 
-std::unique_ptr<VisualizationView>
+vl::ref<VisualizationView>
     createVisualizationView(Window&,
                             DoubleCamera&);
 

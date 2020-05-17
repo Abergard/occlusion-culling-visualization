@@ -36,8 +36,7 @@ int run_app(const ScreenSize& mainScreen)
     const std::unique_ptr<ocv::Window> window = ocv::createGlfwWindow(
         windowTitle, mainScreen.width, mainScreen.height);
     auto camera = ocv::make_ref<ocv::DoubleCamera>(*window);
-    auto view = ocv::make_ref<ocv::VisualizationView>(
-        createVisualizationView(*window, *camera));
+    auto view = createVisualizationView(*window, *camera);
     auto viewController = createWholeAppController(*view);
 
     Debug("Add event listeners");

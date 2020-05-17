@@ -372,7 +372,7 @@ void VisualizationView::closeApplication()
     framebuffer->openglContext()->quitApplication();
 }
 
-std::unique_ptr<VisualizationView>
+vl::ref<VisualizationView>
     createVisualizationView(Window& window,
                             DoubleCamera& camera)
 {
@@ -389,7 +389,7 @@ std::unique_ptr<VisualizationView>
 
     std::shared_ptr<bool> previewEnabled{std::make_shared<bool>(false)};
 
-    return std::make_unique<ocv::VisualizationView>(
+    return ocv::make_ref<ocv::VisualizationView>(
         window,
         camera,
         playerVisualizationState,
