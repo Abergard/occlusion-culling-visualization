@@ -30,9 +30,9 @@ namespace
 {
 bool operator==(const CameraType camera, const ViewType mainView)
 {
-    return camera == CameraType::Player && mainView == ViewType::Player ||
-           camera == CameraType::Observator &&
-               mainView == ViewType::Observator;
+    return (camera == CameraType::Player && mainView == ViewType::Player) ||
+           (camera == CameraType::Observator &&
+            mainView == ViewType::Observator);
 }
 
 bool operator==(const ViewType mainView, const CameraType camera)
@@ -372,9 +372,8 @@ void VisualizationView::closeApplication()
     framebuffer->openglContext()->quitApplication();
 }
 
-vl::ref<VisualizationView>
-    createVisualizationView(Window& window,
-                            DoubleCamera& camera)
+vl::ref<VisualizationView> createVisualizationView(Window& window,
+                                                   DoubleCamera& camera)
 {
     auto playerVisualizationState =
         std::make_shared<ocv::PlayerVisualizationState>();
@@ -389,14 +388,13 @@ vl::ref<VisualizationView>
 
     std::shared_ptr<bool> previewEnabled{std::make_shared<bool>(false)};
 
-    return ocv::make_ref<ocv::VisualizationView>(
-        window,
-        camera,
-        playerVisualizationState,
-        observatorVisualizationState,
-        statistics,
-        std::move(previewEnabled),
-        player.get(),
-        observator.get());
+    return ocv::make_ref<ocv::VisualizationView>(window,
+                                                 camera,
+                                                 playerVisualizationState,
+                                                 observatorVisualizationState,
+                                                 statistics,
+                                                 std::move(previewEnabled),
+                                                 player.get(),
+                                                 observator.get());
 }
 }

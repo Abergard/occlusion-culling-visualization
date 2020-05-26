@@ -14,7 +14,7 @@ namespace ocv
 class Window
 {
 public:
-    ~Window() = default;
+    virtual ~Window() = default;
 
     virtual void addEventListener(vl::UIEventListener*) = 0;
     virtual void show() = 0;

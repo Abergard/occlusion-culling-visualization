@@ -1,4 +1,4 @@
-find_package(glfw3 3.3 CONFIG REQUIRED)
+find_package(glfw3 ${GLFW_VERSION} REQUIRED)
 
 add_library(window
   src/Window.cpp
