@@ -1,4 +1,4 @@
-# Visualization of the Occlusion Culling method 
+# Visualization of the Occlusion Culling method [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/Abergard/occlusion-culling-visualization/tree/gitpod)
 
 ![](https://user-images.githubusercontent.com/5645572/60454151-68618f00-9c33-11e9-8785-83ad522bb8ee.gif)
 
